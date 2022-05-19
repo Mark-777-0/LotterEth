@@ -1,0 +1,180 @@
+
+.nav_main{
+  background-color: #fff !important;
+  
+}
+
+.box_in {
+  border: 4px solid black !important;
+}
+
+.wallet_button {
+
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+}
+.main{
+  padding-top: 50px;
+  min-height: 100vh;
+  background-color: #063e66;
+}
+
+.main h1{
+  
+  font-weight: bold;
+  color: #fff;
+}
+
+.main b{
+  color: #fff !important;
+}
+
+
+.lotteryinfo a{
+  font-size: .9em ;
+}
+
+.lotteryinfo ul li {
+  list-style-type: none;
+}
+
+
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+
+  .footer__container{
+    background-color: #000000;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  #footer__logo {
+    color:#fff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+  
+  .footer__links{
+    width: 100%;
+    max-width: 1000px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+  
+  }
+  
+  .footer__link--wrapper{
+    display: flex;
+  
+  }
+  
+  .footer__link--items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 16px;
+    text-align: left;
+    width: 160px;
+    box-sizing: border-box;
+  
+  }
+  
+  .footer__link--items h2{
+    margin-bottom: 16px;
+  
+  }
+  
+  .footer__link--items >h2 {
+    color: #fff;
+  }
+  
+  .footer__link--items a{
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer__link--items a:hover{
+    color: #005ef5;
+    transition: 0.3s ease-out;
+  }
+  
+  .social__icon--link{
+    color: #fff;
+    font-size: 24px;
+  
+  }
+  
+  .social__media{
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .social__media--wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+  }
+  
+  #logo__footer{
+    
+    width: 100%;
+    position: relative;
+    right: 80px;
+    z-index: 9;
+    
+  }
+  
+  .social__icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px
+  }
+  
+  .social__logo{
+    color: #fff;
+    justify-self: flex-start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  
+  }
+  
+  .website__rights{
+    color: #fff;
+  }
+
+
