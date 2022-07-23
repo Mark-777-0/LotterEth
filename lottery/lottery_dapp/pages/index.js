@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect,updateState, Component, createRef } from 'react'
 import Head from 'next/head'
 import Web3 from 'web3'
 import lotteryContract from '../blockchain/lottery'
@@ -16,15 +16,17 @@ export default function Home() {
   const [lotteryId, setLotteryId] = useState()
   const [error, setError] = useState('')
   const [successMsg, setSuccessMsg] = useState('')
+  const [modal,setModal] = useState(false)
 
+  const modalHandler = () => {
+    setModal (!modal)
+  }
 
-  useEffect(() => {
-    
+  //update state should happen upon any page changes, so user is updated to game
+  useEffect(() => { 
     updateState()
     }, [lcContract])
   
-
-
   const updateState = () => {
     if (lcContract) getPot() 
     if (lcContract) getPlayers()
@@ -36,6 +38,8 @@ export default function Home() {
     setLotteryPot(web3.utils.fromWei(pot,'ether'))
     
   }
+
+
   const getPlayers= async () => {
     const players = await lcContract.methods.getPlayers().call() ///fetch players from sc then set players variable
     setPlayers(players)
@@ -139,6 +143,8 @@ export default function Home() {
 
   }
 
+
+
   return (
     <div >
       <Head>
@@ -153,15 +159,15 @@ export default function Home() {
 
       <main className={styles.main}>
       
-       <nav className= {`${styles.nav_main} navbar mb-3 is-fixed-top`} id='nav'>
+       <nav className= {`${styles.nav_main} navbar mb-2 is-fixed-top`} id='nav'>
        <div className='container'>
-        
+
           <div className='navbar-brand'>
             
-            <a className='navbar-item' href="/">
-              <img src= '/powered_eth.png'  ></img> 
+            <a className='logo' href="next/">
+            <picture> <img src= '/eth.png'  ></img> </picture>
              </a> 
-              <a onClick={menuHandler} role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarItems">
+              <a onClick={menuHandler} role="button" className="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarItems">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -170,35 +176,38 @@ export default function Home() {
           </div>
           
 
-        <div id="navbarItems" class="navbar-menu">
-          <div class="navbar-start">
+        <div id="navbarItems" className="navbar-menu">
+          <div className="navbar-start">
 
     </div>
     </div>
 
           <div className='navbar-end'>
-          <a href='/posts/contact' class="navbar-item ">
+          <a href='#' className="navbar-item ">
         Contact
       </a>
 
-      <a href='/posts/FAQ' class="navbar-item">
+      <a href='#' className="navbar-item">
         FAQ
       </a>
       
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+      <div className="navbar-item has-dropdown is-hoverable">
+        <a className="navbar-link">
           More Games
         </a>
 
-        <div class="navbar-dropdown">
-          <a href='#' class="navbar-item">
-            Sol Lottery
+        <div className="navbar-dropdown">
+        <a href='#' className="navbar-item">
+            Functionality Coming Soon
           </a>
-          <a class="navbar-item">
+          <a href='#' className="navbar-item">
+            Monero Lottery
+          </a>
+          <a className="navbar-item">
             Bitcoin Lottery
           </a>
-          <hr class="navbar-divider"/>
-          <a class="navbar-item">
+          <hr className="navbar-divider"/>
+          <a className="navbar-item">
             Report an issue
           </a>
 
@@ -206,7 +215,7 @@ export default function Home() {
         
         
       </div>
-      <button id="wallet" onClick={connectWalletHandler} className={`${styles.wallet_button} button is-link`}> Connect Wallet </button>
+      <button id="wallet" onClick={connectWalletHandler} className={`${styles.wallet_button} button is-link`}> {address !== undefined? address.slice(0,7) + '...' + address.slice(-3) : 'Connect Wallet'} </button>
           </div>
           </div>
        </nav>
@@ -215,7 +224,63 @@ export default function Home() {
 
 
 
+       <section id="jumbotron" className='hero is-link has-text-centered'>
+    <div className='hero-body'>
+      <p className='title'>
+        <span className="stroke">
+        Take a Spin at the LotterETH!</span>
+      </p>
+      <br></br>
+      {/* I CHANGED THIS PART THE MENU AND THE FONT */}
+      <p className={`${address !== undefined && 'active'} subtitle`} >Have fun playing this test-network lottery!</p>
+      <p className={`${address !== undefined && 'active'} subtitle`} >Current game pot <b> {lotteryPot} ETH </b> with <b> {lotteryPlayers.length} </b> players.</p>
+      <p className={`${address !== undefined && 'active'} subtitle-updated`}> Connect Your Wallet to See The Game Stats!</p>
+      </div>
+      <div className='hero-footer'>
+        <div className='container has-text-centered'>
 
+           <div id="modal" className= {`${modal && 'is-active'} modal`}>
+            <div onClick={modalHandler} className='modal-background'></div>
+            <div className='modal-card'>
+            
+            <header className='modal-card-head'>
+              <p className='modal-card-title'> <span> How To Enter the LotterETH</span></p>
+              <button onClick={modalHandler} className='delete' aria-label='close'></button>
+            </header>
+             <section className='modal-card-body'>
+               <ol>
+                <li className='modal-li'>
+                <span> Get Some Test-net ETH</span> - <a href='https://rinkebyfaucet.com/'> Rinkeby Faucet Here</a> and an <a href='https://metamask.io/'> ETH wallet</a> if you don&apos;t have one!
+             
+                </li>
+                <li className='modal-li'>
+                <span>Buy A Ticket</span> - Each ticket costs .11 ETH, and some gas. Buy as many as you like. 
+                </li>
+                <li className='modal-li'>
+                <span>E-mail Me</span> - The contract owner must end the game by pressing the &quot;End Game&quot; button! E-mail me if you&apos;d like me to demonstrate!
+                </li>
+                
+               </ol>
+               <p id='email'> <span>Need More Help?</span> - Contact me and I&apos;ll explain any part of the code!</p>
+
+
+
+             </section>
+
+             <footer className='modal-card-foot'>
+
+               <button onClick={modalHandler} className='  button is-primary'> Let&apos;s Go!</button>
+             </footer>
+             
+             </div>
+            </div> 
+
+        <button onClick={modalHandler} className= ' js-modal-trigger is-primary button font-weight-bold'  data-target="modal"> <picture> <img id='cog' src="../images/cog.svg" ></img> </picture> Rules! </button>
+        
+        </div>
+        
+    </div>
+    </section>
 
 
        <div className='container'>
@@ -226,7 +291,7 @@ export default function Home() {
              
              <section className='mt-5'>
                <p className='plain'> <b> Enter the lottery by sending 0.01 Ether  </b></p>
-               <button onClick={enterLotteryHandler} className='button is-link is-large is-light mt-3'>Play Now</button>
+               <button onClick={enterLotteryHandler} className='button is-link is-large is-primary mt-3'>Play Now</button>
              </section>
              <section className='mt-6'>
                <p className='plain'> <b> Admin Only </b> </p>
@@ -235,14 +300,14 @@ export default function Home() {
              <section>
 
                <div className='container mt-6 notification is-success'>
-                 <p className='plain'> <b> Winners  </b></p>
+                 <p className='plain'>  Winner: </p>
                    <p> {successMsg} </p>
                  
                  </div>
                </section>
              <section>
                <div className='container mt-6 notification is-danger'>
-               <p className='plain'> <b> Errors </b></p>
+               <p className='plain'> Errors: </p>
                  <p> {error} </p>
                </div>
              </section>
@@ -259,7 +324,7 @@ export default function Home() {
                       <div> <ul className='ml-0'> 
                       { ///check if it exists, if there are more than 0 as well
                         (lotteryPlayers && lotteryPlayers.length >0) && lotteryPlayers.map((player, index) => {
-                        return <li key={`${player}-${index}`}> <a href={`https://etherscan.io/address/${lotteryPlayers}`} target='_blank' > 
+                        return <li key={`${player}-${index}`}> <a href={`https://etherscan.io/address/${lotteryPlayers}`} target='_blank' rel='noreferrer'> 
                         {player.slice(0,5) +'.....' +player.slice(32,)} </a> 
                         </li> 
                         })
@@ -294,30 +359,7 @@ export default function Home() {
              </div>
             
              <section> 
-          <div className='card'>
-          <div className='card-content'>
-          <div className='content'>
-        <div class="buttons has-addons is-centered">
 
-        <button class="button is-link is-selected">0</button>
-        <button class="button ">1</button>
-        <button class="button ">2</button>
-        <button class="button ">3</button>
-        <button class="button ">4</button>
-        <button class="button ">5</button>
-        <button class="button ">6</button>
-        <button class="button ">7</button>
-        <button class="button ">8</button>
-        <button class="button ">9</button>
-        <button class="button is-link">a</button>
-        <button class="button is-link">b</button>
-        <button class="button is-link">c</button>
-        <button class="button is-link">d</button>
-        <button class="button is-link">e</button>
-        </div>
-        </div>
-        </div>
-        </div>
         </section>
 
              </div>
@@ -337,7 +379,7 @@ export default function Home() {
                         return <div className='history-entry mt-2' key={item.id}>
                         <div> Lottery #{item.id} winner: 
                         <div>
-                          <a href= {`https://etherscan.io/address/${item.address}`} target='_blank' >
+                          <a href= {`https://etherscan.io/address/${item.address}`} target='_blank' rel='noreferrer' >
                               {item.address}
                           </a> 
                         </div>
@@ -357,7 +399,7 @@ export default function Home() {
 
 
 
-
+{/* 
 
       <footer className='footer footer-background-color'>
       <div className="footer__container">
@@ -399,6 +441,7 @@ export default function Home() {
                     className="social__icon--link"
                     href="/"
                     target="_blank"
+                    rel="noreferrer"
                     aria-label="Facebook"
                   >
                     <i className="fab fa-facebook"></i>
@@ -407,6 +450,7 @@ export default function Home() {
                     className="social__icon--link"
                     href="/"
                     target="_blank"
+                    rel="noreferrer"
                     aria-label="Instagram"
                   >
                     <i className="fab fa-instagram"></i>
@@ -415,6 +459,7 @@ export default function Home() {
                     className="social__icon--link"
                     href="//www.youtube.com/"
                     target="_blank"
+                    rel="noreferrer"
                     aria-label="Youtube"
                   >
                     <i className="fab fa-youtube"></i>
@@ -423,24 +468,18 @@ export default function Home() {
                     className="social__icon--link"
                     href="/"
                     target="_blank"
+                    rel="noreferrer"
                     aria-label="Twitter"
                   >
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a
-                    className="social__icon--link"
-                    href="https://www.linkedin.com/company/clever-nutrition-llc/"
-                    target="_blank"
-                    aria-label="LinkedIn"
-                  >
-                    <i className="fab fa-linkedin"></i>
-                  </a>
+
 
                 </div>
               </div>
             </section>
           </div>
-      </footer>
+      </footer> */}
     </div>
   )
 }

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start_next": "next start", 
+    "start_next": "next start",
     "lint": "next lint",
     "compile": "solcjs --abi --include-path node_modules/ --base-path . blockchain/contracts/Lottery.sol --output-dir blockchain/build",
     "css-build": "node-sass --omit-source-map-url styles/sass/mystyles.scss styles/mystyles.css",
@@ -13,7 +13,6 @@
     "start": "npm run css-watch"
   },
   "dependencies": {
-    "bulma": "^0.9.4",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
@@ -21,8 +20,12 @@
     "web3": "^1.7.3"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.13.0",
+    "@types/react": "^18.0.15",
+    "bulma": "^0.9.4",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
+    "netlify-cli": "^10.11.1",
     "node-sass": "^7.0.1"
   },
   "description": "TLottery.eth",

@@ -1,5 +1,5 @@
 
-import '../styles/mystyles.css'
+import '../styles/sass/mystyles.scss'
 
 
 
