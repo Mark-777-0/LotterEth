@@ -177,16 +177,13 @@ export default function Home() {
             </div>
 
             <div className="navbar-end">
-              <a href="#" className="navbar-item ">
-                Contact
-              </a>
 
               <a href="#" className="navbar-item">
-                FAQ
+                Fork On Github
               </a>
 
               <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link">More Games</a>
+                <a className="navbar-link">More Things!</a>
 
                 <div className="navbar-dropdown">
                   <a href="#" className="navbar-item">
@@ -195,7 +192,6 @@ export default function Home() {
                   <a href="#" className="navbar-item">
                     Monero Lottery
                   </a>
-                  <a className="navbar-item">Bitcoin Lottery</a>
                   <hr className="navbar-divider" />
                   <a className="navbar-item">Report an issue</a>
                 </div>
