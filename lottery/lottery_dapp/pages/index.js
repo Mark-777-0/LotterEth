@@ -21,7 +21,7 @@ export default function Home() {
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [modal, setModal] = useState(false);
-
+  const [menu, setMenu] = useState(false)
   const modalHandler = () => {
     setModal(!modal);
   };
@@ -136,7 +136,9 @@ export default function Home() {
     }
   };
 
-  const menuHandler = () => {};
+  const menuHandler = () => {
+    setMenu(!menu)
+  };
 
   return (
     <div>
@@ -158,6 +160,7 @@ export default function Home() {
                   <img src="/eth.png"></img>{" "}
                 </picture>
               </a>
+              <div className='mini-menu'>
               <a
                 onClick={menuHandler}
                 role="button"
@@ -170,13 +173,14 @@ export default function Home() {
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
+              </div>
             </div>
 
-            <div id="navbarItems" className="navbar-menu">
+            <div id="navbarItems" className='navbar-menu'>
               <div className="navbar-start"></div>
             </div>
 
-            <div className="navbar-end">
+            <div className={` ${menu && 'gone' } navbar-end`}>
 
               <a href="#" className="navbar-item">
                 Fork On Github

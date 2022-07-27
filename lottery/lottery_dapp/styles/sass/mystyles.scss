@@ -38,8 +38,10 @@ $input-shadow: none;
 @import "../../node_modules/bulma/bulma.sass";
 
 
-//my stuff
-
+//my code
+.min-menu{
+  margin-left: 1rem;
+}
 .navbar-brand{
   width: 100px;
   display: flex;
@@ -56,6 +58,9 @@ $input-shadow: none;
   }
 }
 
+.gone {
+  display:none;
+} 
 .footer {
     background-color: #fafafa;
     padding: 3rem 1.5rem 6rem; }
