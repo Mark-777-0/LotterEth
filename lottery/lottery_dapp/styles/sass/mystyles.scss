@@ -43,9 +43,11 @@ $breakPointWidth: 1024px;
         @content
     }
 }
-//my code
-.min-menu{
-  margin-left: 1rem;
+
+.mini-menu{
+  left: 100px;
+  
+
 }
 .navbar-brand{
   width: 100px;
@@ -65,7 +67,11 @@ $breakPointWidth: 1024px;
 @include mobile{
   .gone {
     display:none;
-  } }
+  }
+
+
+
+}
 .footer {
     background-color: #fafafa;
     padding: 3rem 1.5rem 6rem; }
@@ -326,3 +332,13 @@ $breakPointWidth: 1024px;
 
         
     }
+
+
+@include mobile{
+  .mini-menu{
+    position: absolute;
+    
+  }
+
+
+}

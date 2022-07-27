@@ -153,7 +153,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <nav className={`${styles.nav_main} navbar mb-2 is-fixed-top`} id="nav">
-          <div className="container">
+          <div className="container" id='menus'>
             <div className="navbar-brand">
               <a className="logo" href="next/">
                 <picture>
