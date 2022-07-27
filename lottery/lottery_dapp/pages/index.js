@@ -21,7 +21,8 @@ export default function Home() {
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [modal, setModal] = useState(false);
-  const [menu, setMenu] = useState(false)
+  const [menu, setMenu] = useState(true)
+
   const modalHandler = () => {
     setModal(!modal);
   };

@@ -37,7 +37,12 @@ $input-shadow: none;
 @import "../../node_modules/bulma/sass/layout/section.sass";
 @import "../../node_modules/bulma/bulma.sass";
 
-
+$breakPointWidth: 1024px;
+@mixin mobile{
+    @media (max-width: #{$breakPointWidth}){
+        @content
+    }
+}
 //my code
 .min-menu{
   margin-left: 1rem;
@@ -57,10 +62,10 @@ $input-shadow: none;
 
   }
 }
-
-.gone {
-  display:none;
-} 
+@include mobile{
+  .gone {
+    display:none;
+  } }
 .footer {
     background-color: #fafafa;
     padding: 3rem 1.5rem 6rem; }
