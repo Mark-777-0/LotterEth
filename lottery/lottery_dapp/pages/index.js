@@ -183,7 +183,7 @@ export default function Home() {
 
             <div className={` ${menu && 'gone' } navbar-end`}>
 
-              <a href="#" className="navbar-item">
+              <a href="https://github.com/Mark-777-0/LotterEth" className="navbar-item">
                 Fork On Github
               </a>
 
@@ -194,7 +194,7 @@ export default function Home() {
                   <a href="#" className="navbar-item">
                     Functionality Coming Soon
                   </a>
-                  <a href="#" className="navbar-item">
+                  <a href="https://www.getmonero.org/" className="navbar-item">
                     Monero Lottery
                   </a>
                   <hr className="navbar-divider" />
